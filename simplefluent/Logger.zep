@@ -8,15 +8,12 @@ class Logger
     const PHP_STREAM_CLIENT_CONNECT = 4;
     const PHP_STREAM_CLIENT_PERSISTENT = 1;
 
-    const BACKOFF_TYPE_EXPONENTIAL = 0x01;
-    const BACKOFF_TYPE_USLEEP      = 0x02;
 
     protected defaultOptions = [
         "socket_timeout"     : 1, 
         "connection_timeout" : 1,
-        "backoff_mode"       : 0x02,
-        "backoff_base"       : 3,
-        "usleep_wait"        : 1000,
+        "backoff_exponential": true,
+        "backoff_wait"       : 1000,
         "persistent"         : false,
         "retry_socket"       : true,
         "max_write_retry"    : 3
@@ -126,10 +123,10 @@ class Logger
                         }
                     }
                     // 通信間隔制御
-                    if (this->options["backoff_mode"] == self::BACKOFF_TYPE_EXPONENTIAL) {
-                        usleep(pow(3, retry) * 1000);
+                    if (this->options["backoff_exponential"] === true) {
+                        usleep(mt_rand(0, pow(20000, retry)) * 100);
                     } else {
-                        usleep(this->options["usleep_wait"]);
+                        usleep(this->options["backoff_wait"]);
                     }
                     // リトライ回数
                     let retry += 1;
