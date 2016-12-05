@@ -29,7 +29,7 @@ This module can only post json_serialized data to Fluentd.
     // posting data
     $data = ["word" => "Hello World"];
 
-    //if you use unix socket
+    // if you use unix domain socket
     $logger1 = new \SimpleFluent\Logger("unix:///var/run/td-agent/td-agent.sock");
     $logger1->post("tag.unix", $data);
 
