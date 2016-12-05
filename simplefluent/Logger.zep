@@ -124,7 +124,7 @@ class Logger
                     }
                     // 通信間隔制御
                     if (this->options["backoff_exponential"] === true) {
-                        usleep(mt_rand(0, pow(20000, retry)) * 100);
+                        usleep(mt_rand(0, pow(2, retry) * 10000) * 100);
                     } else {
                         usleep(this->options["backoff_wait"]);
                     }
