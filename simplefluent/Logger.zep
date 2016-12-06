@@ -5,8 +5,6 @@ class Logger
 
     const DEFAULT_TRANSPORT = "tcp";
 
-    const PHP_STREAM_CLIENT_CONNECT = 4;
-    const PHP_STREAM_CLIENT_PERSISTENT = 1;
 
 
     protected defaultOptions = [
@@ -148,9 +146,9 @@ class Logger
         }
 
         var connect_options;
-        let connect_options = Logger::PHP_STREAM_CLIENT_CONNECT;
+        let connect_options = STREAM_CLIENT_CONNECT;
         if (this->options["persistent"] === true) {
-            let connect_options = connect_options | Logger::PHP_STREAM_CLIENT_PERSISTENT;
+            let connect_options = connect_options | STREAM_CLIENT_PERSISTENT;
         }
 
         var eno;
