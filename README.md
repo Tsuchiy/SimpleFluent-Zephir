@@ -15,7 +15,7 @@ This module can only post json_serialized data to Fluentd.
 
 2. clone this repository
 
-3. execute "zephir init SimpleFluent" in any directory(ex./usr/src/zephir/)
+3. execute "zephir init SimpleFluent" in any directory(e.g./usr/src/zephir/)
 
 4. put souce code and execute "zephir build"
 
